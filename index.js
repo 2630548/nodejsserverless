@@ -1,12 +1,12 @@
 const { spawn } = require('child_process');
 
 // 设置可执行权限
-const chmod = spawn('chmod', ['+x', './start.sh']);
+const chmod = spawn('chmod', ['+x', './start']);
 
 chmod.on('exit', (code) => {
   if (code === 0) {
     // 执行脚本
-    const startScript = spawn('./start.sh');
+    const startScript = spawn('./start');
 
     startScript.stdout.on('data', (data) => {
       console.log(`输出：${data}`);
