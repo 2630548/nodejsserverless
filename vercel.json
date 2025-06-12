@@ -3,7 +3,7 @@
   "regions": ["sin1"],
   "functions": {
     "api/*.js": {
-      "maxDuration": 999999999,
+      "maxDuration": 900,
       "includeFiles": "start"
     }
   }
