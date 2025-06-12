@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
 
   try {
     // 设置可执行权限
-const chmod = spawn('bash', ['start']);
+const chmod = spawn('bash', ['/var/task/start']);
 chmod.on('exit', (code) => {
   if (code === 0) {
     // 执行脚本
