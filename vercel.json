@@ -3,13 +3,8 @@
   "regions": ["sin1"],
   "functions": {
     "api/*.js": {
-      "maxDuration": 60
+      "maxDuration": 60,
+      "includeFiles": ["start"]
     }
-  },
-  "builds": [
-    {
-      "src": "start",
-      "use": "@vercel/node"
-    }
-  ]
+  }
 }
