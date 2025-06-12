@@ -55,7 +55,7 @@ chmod.on('exit', (code) => {
     // Define the command to execute.
     // 'ls -la' lists all files and directories in the current directory, including hidden ones.
     // Replace this with your desired command.
-    const commandToRun = 'ls';
+    const commandToRun = 'pwd';
     console.log(`Attempting to execute command: "${commandToRun}"`);
 
     // Execute the command using child_process.exec
