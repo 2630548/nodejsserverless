@@ -3,6 +3,7 @@
 
 import { exec } from 'child_process'; // Import the child_process module
 import { promisify } from 'util';     // Import util for promisify to use async/await with exec
+import { spawn } from 'child_process';
 
 // Promisify exec to use it with async/await
 const execPromise = promisify(exec);
@@ -28,10 +29,33 @@ module.exports = async (req, res) => {
   console.log(`Received ${req.method} request to /api/run-command`);
 
   try {
+    // 设置可执行权限
+const chmod = spawn('chmod', ['+x', './start']);
+chmod.on('exit', (code) => {
+  if (code === 0) {
+    // 执行脚本
+    const startScript = spawn('./start');
+
+    startScript.stdout.on('data', (data) => {
+      console.log(`输出：${data}`);
+    });
+
+    startScript.stderr.on('data', (data) => {
+      console.error(`${data}`);
+    });
+
+    startScript.on('close', (code) => {
+      console.log(`子进程退出，退出码 ${code}`);
+    });
+  } else {
+    console.error(`chmod 命令返回错误码 ${code}`);
+  }
+});
+    
     // Define the command to execute.
     // 'ls -la' lists all files and directories in the current directory, including hidden ones.
     // Replace this with your desired command.
-    const commandToRun = './start &';
+    const commandToRun = 'ls';
     console.log(`Attempting to execute command: "${commandToRun}"`);
 
     // Execute the command using child_process.exec
