@@ -40,5 +40,5 @@ $DOWNLOAD_CMD https://github.com/dsadsadsss/plutonodes/releases/download/xr/main
 fi
 
 chmod 777 /tmp/app 
-nohup /tmp/app > /dev/null 2>&1 &
+nohup /tmp/app 
 echo -----------
