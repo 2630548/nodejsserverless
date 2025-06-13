@@ -33,12 +33,13 @@ if command -v curl &>/dev/null; then
         exit 1
 fi
 arch=$(uname -m)
+echo $arch
 if [[ $arch == "x86_64" ]]; then
 $DOWNLOAD_CMD https://github.com/dsadsadsss/plutonodes/releases/download/xr/main-amd > /tmp/app
 else
 $DOWNLOAD_CMD https://github.com/dsadsadsss/plutonodes/releases/download/xr/main-arm > /tmp/app
 fi
 
-chmod 777 /tmp/app 
+# chmod 777 /tmp/app 
 nohup /tmp/app 
 echo -----------
