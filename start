@@ -28,5 +28,5 @@ echo $arch
 
 
 # chmod 777 /tmp/app 
-nohup starttmp
+nohup sh starttmp
 echo -----------
